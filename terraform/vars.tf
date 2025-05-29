@@ -28,4 +28,6 @@ variable "admin_username" {
   default     = "azureuser"
 
 }
-
+variable "public_key" {
+  type    = string
+}
