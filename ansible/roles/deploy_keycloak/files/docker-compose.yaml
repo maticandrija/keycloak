@@ -22,6 +22,7 @@ services:
       DB_ADDR: postgres
       DB_DATABASE: keycloak
       KEYCLOAK_HTTP_ENABLED: true
+      PROXY_ADDRESS_FORWARDING: true
     depends_on:
       - postgres
 
