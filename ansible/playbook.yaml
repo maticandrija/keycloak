@@ -1,0 +1,15 @@
+- name: Test SSH connection to Azure VM
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ping the VM
+      ansible.builtin.ping:
+
+    - name: Run uname on the VM
+      ansible.builtin.shell: uname -a
+      register: uname_output
+
+    - name: Print uname result
+      ansible.builtin.debug:
+        msg: "{{ uname_output.stdout }}"
