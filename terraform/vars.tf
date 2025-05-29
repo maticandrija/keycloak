@@ -22,3 +22,13 @@ variable "resource_group_location" {
   description = ""
   default = "eastus"
 }
+
+variable "admin_username" {
+  description = "Username for the VM"
+  default     = "azureuser"
+
+}
+
+variable "public_key" {
+  type = string
+}
