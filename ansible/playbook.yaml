@@ -1,15 +1,36 @@
-- name: Test SSH connection to Azure VM
+- name: Deploy Keycloak + Postgres
   hosts: all
-  gather_facts: false
+  become: true
+  vars:
+    docker_compose_dir: /opt/keycloak_compose
+  roles:
+    - deploy_keycloak
 
   tasks:
-    - name: Ping the VM
-      ansible.builtin.ping:
+    - name: Check if Docker is installed
+      command: docker --version
+      register: docker_check
+      ignore_errors: true
 
-    - name: Run uname on the VM
-      ansible.builtin.shell: uname -a
-      register: uname_output
+    - name: Debug Docker version
+      debug:
+        msg: "{{ docker_check.stdout }}"
 
-    - name: Print uname result
-      ansible.builtin.debug:
-        msg: "{{ uname_output.stdout }}"
+    - name: Check running Docker containers
+      command: docker ps
+      register: running_containers
+
+    - name: Print running containers
+      debug:
+        msg: "{{ running_containers.stdout_lines }}"
+
+    - name: Check docker-compose status
+      command: docker compose ps
+      args:
+        chdir: "{{ docker_compose_dir }}"
+      register: compose_status
+      ignore_errors: true
+
+    - name: Debug docker-compose ps output
+      debug:
+        var: compose_status.stdout_lines

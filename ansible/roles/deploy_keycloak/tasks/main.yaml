@@ -1,0 +1,28 @@
+- name: Ensure docker and docker-compose are installed
+  apt:
+    name: [docker.io, docker-compose]
+    state: present
+    update_cache: yes
+
+- name: Create project directory
+  file:
+    path: /opt/keycloak_compose
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose.yaml
+  copy:
+    src: docker-compose.yaml
+    dest: /opt/keycloak_compose/docker-compose.yaml
+    mode: '0644'
+
+- name: Copy .env file
+  copy:
+    src: .env
+    dest: /opt/keycloak_compose/.env
+    mode: '0600'
+
+- name: Run docker-compose up
+  command: docker compose up -d
+  args:
+    chdir: /opt/keycloak_compose
