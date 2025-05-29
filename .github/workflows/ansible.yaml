@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Ansible playbook
         run: |
-          ansible-playbook ansible/playbook.yml \
+          ansible-playbook ansible/playbook.yaml \
             -i "$VM_IP," \
             --private-key ~/.ssh/id_rsa \
             -u $VM_USER
