@@ -23,6 +23,9 @@ services:
       DB_DATABASE: keycloak
       KEYCLOAK_HTTP_ENABLED: true
       PROXY_ADDRESS_FORWARDING: true
+      KC_PROXY: edge
+      KC_HOSTNAME: 13.92.142.103
+      KC_HOSTNAME_STRICT: false
     depends_on:
       - postgres
 
