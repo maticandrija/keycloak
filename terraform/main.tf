@@ -36,7 +36,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "vm-keycloak"
   resource_group_name = var.resource_group_name
   location            = var.resource_group_location
-  size                = "Standard_B8ms"
+  size                = "Standard_B4ms"
   admin_username      = var.admin_username
   network_interface_ids = [
     azurerm_network_interface.nic.id,
