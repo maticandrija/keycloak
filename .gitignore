@@ -1,2 +1,2 @@
-ansible/files/.env
+ansible/roles/deploy_keycloak/files/.env
 

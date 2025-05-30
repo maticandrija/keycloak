@@ -1,12 +1,12 @@
-- name: Deploy Keycloak + Postgres + Nginx Proxy
+- name: Deploy Keycloak + Postgres
   hosts: all
   become: true
   vars:
     docker_compose_dir: /opt/keycloak_compose
-    ip_address: "{{ lookup('env','VM_IP') }}"
+    #ip_address: "{{ lookup('env','VM_IP') }}"
   roles:
     - deploy_keycloak
-    - nginx_keycloak_proxy  
+    #- nginx_keycloak_proxy  
 
   tasks:
     - name: Check if Docker is installed
