@@ -3,7 +3,7 @@
   become: true
   vars:
     docker_compose_dir: /opt/keycloak_compose
-    ip_address: "{{ lookup('env','VM_IP') }}" 
+    ip_address: "13.92.142.103" 
   roles:
     - deploy_keycloak
     - nginx_keycloak_proxy  
