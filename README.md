@@ -1,6 +1,6 @@
 # Keycloak with Postgres and Static Webpage on Azure VM
 
-Location: https://13.92.142.103/webapp
+Location: https://13.92.142.103/webapp/
 
 ## Overview
 This project demonstrates how to deploy Keycloak for identity and access management, backed by a Postgres database, alongside a static web page protected by Keycloak authentication. Postgress database and Keycloak run inside containers on an Azure virtual machine configured per requirement, in minimal container environment. The static webpage access is secured by Keycloak via OpenID Connect integration.
