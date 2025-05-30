@@ -12,7 +12,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
-    command: start-dev
+    command: start
     restart: always
     ports:
       - "8080:8080"
@@ -21,6 +21,8 @@ services:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       DB_DATABASE: keycloak
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
       KEYCLOAK_HTTP_ENABLED: true
       PROXY_ADDRESS_FORWARDING: true
       KC_PROXY: edge
