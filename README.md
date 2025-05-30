@@ -1,5 +1,7 @@
 # Keycloak with Postgres and Static Webpage on Azure VM
 
+Location: https://13.92.142.103/webapp
+
 ## Overview
 This project demonstrates how to deploy Keycloak for identity and access management, backed by a Postgres database, alongside a static web page protected by Keycloak authentication. Postgress database and Keycloak run inside containers on an Azure virtual machine configured per requirement, in minimal container environment. The static webpage access is secured by Keycloak via OpenID Connect integration.
 
@@ -42,3 +44,25 @@ Docker Compose network connects Keycloak container with Postgres container inter
 - Integrate a dynamic frontend application (React or Angular) to enrich user experience and more flexible client-side logic with secured Keycloak integration. 
 - Add a centralized logging and monitoring stack
 - Implement Role-Based Access Control (RBAC) in Keycloak
+
+
+### Secrets
+
+This project has these 7 secrets, if you want to replicate it, create Azure subscription, SSH key and you can set you own static IP.
+
+- AZURE_CLIENT_ID
+- AZURE_CLIENT_SECRET
+- AZURE_SUBSCRIPTION_ID
+- AZURE_TENANT_ID
+- SSH_PRIVATE_KEY
+- SSH_PUBLIC_KEY
+- VM_IP
+
+In addition to that, secrets for Keycloak and Postgress should be set in secret file on path: /keycloak/ansible/roles/deploy_keycloak/files/.env 
+Those secrets are: 
+
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- KEYCLOAK_ADMIN
+- KEYCLOAK_ADMIN_PASSWORD
+
