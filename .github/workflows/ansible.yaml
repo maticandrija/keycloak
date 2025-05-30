@@ -18,6 +18,12 @@ jobs:
           sudo apt update
           sudo apt install -y ansible
 
+      - name: Debug SSH_PRIVATE_KEY length
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | wc -c
+
+      - name: Debug SSH_PUBLIC_KEY length
+        run: echo "${{ secrets.SSH_PUBLIC_KEY }}" | wc -c
+
       - name: Setup SSH keys
         run: |
           mkdir -p ~/.ssh
